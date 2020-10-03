@@ -1,18 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public float moveSpeed, timer;
+    public float moveSpeed, playerTime;
     public Vector2 movement;
 
     Rigidbody2D rb;
     float ms;
+    public float timer { get; set; }
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        timer = playerTime;
     }
 
     void Update()
@@ -35,7 +38,11 @@ public class Movement : MonoBehaviour
 
     void Explode()
     {
-        Debug.Log("I have gone boom");
+        //Debug.Log("I have gone boom");
+
+        //destroy all nearby objects & play boom animation
+
+        //send player back to starting position
     }
 }
 
