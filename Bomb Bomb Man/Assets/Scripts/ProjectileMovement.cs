@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class ProjectileMovement : MonoBehaviour
 {
-    public float bulletSpeed, damage;
+    public float bulletSpeed, damage, timer;
 
     public GameObject target;
+    float bulletTime;
 
     Rigidbody2D rb;
 
@@ -17,7 +18,11 @@ public class ProjectileMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        
+        timer -= Time.fixedDeltaTime;
+        if (timer <= 0)
+        {
+            Destroy(gameObject);
+        }
         float bs = bulletSpeed * Time.fixedDeltaTime;
 
         transform.Translate(new Vector3(0, bs, 0), Space.Self);
@@ -36,8 +41,16 @@ public class ProjectileMovement : MonoBehaviour
         {
             obj.GetComponent<Movement>().playerTime -= damage;
         }
-        
+
 
         Destroy(gameObject);
+    }
+    public void SetSpeed(float speed, float bulletDamage, float bulletTimer)
+    {
+        bulletSpeed = speed;
+        damage = bulletDamage;
+        timer = bulletTimer;
+
+        
     }
 }

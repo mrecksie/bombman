@@ -11,9 +11,11 @@ public class Movement : MonoBehaviour
     Rigidbody2D rb;
     float ms;
     public float timer { get; set; }
+    
 
     void Start()
     {
+        playerTime = 10f;
         rb = GetComponent<Rigidbody2D>();
         timer = playerTime;
     }
