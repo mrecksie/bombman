@@ -11,6 +11,11 @@ public class Movement : MonoBehaviour
     Rigidbody2D rb;
     float ms;
     public float timer { get; set; }
+
+    //Events for explode
+    public delegate void Explosion();
+    public Explosion OnExplosion;
+
     
 
     void Start()
@@ -41,6 +46,7 @@ public class Movement : MonoBehaviour
     void Explode()
     {
         //Debug.Log("I have gone boom");
+        if (OnExplosion != null) { OnExplosion.Invoke(); }
 
         //destroy all nearby objects & play boom animation
 
