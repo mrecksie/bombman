@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyShoot : MonoBehaviour
+public class EnemyShoot : MonoBehaviour, IExplode
 {
 
     #region | Bullet Stats
@@ -19,6 +19,8 @@ public class EnemyShoot : MonoBehaviour
 
     public float turnSpeed, attackRadius;
 
+    
+
     void Start()
     {
         currentTime = 3; //initialize
@@ -33,7 +35,7 @@ public class EnemyShoot : MonoBehaviour
 
         if ((targetPos - (Vector2)transform.position).magnitude >= attackRadius) { return; }
 
-        RaycastHit2D enemyScan = Physics2D.Raycast((Vector2)transform.position, targetPos - (Vector2)transform.position, LayerMask.GetMask("Ignore Raycast", "UI")); //Sends a ray towards the playerW
+        RaycastHit2D enemyScan = Physics2D.Raycast((Vector2)transform.position, targetPos - (Vector2)transform.position, LayerMask.GetMask("Ignore Raycast", "UI", "Floor")); //Sends a ray towards the playerW
         if(enemyScan.collider == null) { return; }
         if (!enemyScan.collider.CompareTag("Player")) { return; }
         FacePlayer();
@@ -58,5 +60,14 @@ public class EnemyShoot : MonoBehaviour
         float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - 90f;
         Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * turnSpeed);
+    }
+
+
+    //When player explodes this will trigger
+    // IGNORE explosionLocation, only used for destroying tiles on a tilemap
+    public void OnExplode(Vector2 explosionLocation)
+    {
+        //Anything that happens before the object is deleted like death animation
+        Destroy(this);
     }
 }
