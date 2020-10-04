@@ -21,7 +21,7 @@ public class EnemyShoot : MonoBehaviour
 
     void Start()
     {
-        currentTime = 0; //initialize
+        currentTime = 3; //initialize
         target = FindObjectOfType<Movement>().gameObject;
         attackRadius = 3f;
     }
@@ -30,10 +30,12 @@ public class EnemyShoot : MonoBehaviour
     {
         currentTime += Time.deltaTime;
         targetPos = (Vector2)target.transform.position;
+
         if ((targetPos - (Vector2)transform.position).magnitude >= attackRadius) { return; }
+
         RaycastHit2D enemyScan = Physics2D.Raycast((Vector2)transform.position, targetPos - (Vector2)transform.position, LayerMask.GetMask("Ignore Raycast", "UI")); //Sends a ray towards the playerW
         if(enemyScan.collider == null) { return; }
-        if (enemyScan.collider.CompareTag("Player")) { return; }
+        if (!enemyScan.collider.CompareTag("Player")) { return; }
         FacePlayer();
         if (currentTime >= waitTime)
         {
