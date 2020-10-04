@@ -8,6 +8,8 @@ public class Movement : MonoBehaviour
     public float moveSpeed, playerTime;
     public Vector2 movement;
 
+    public int bombsUsed;
+
     Rigidbody2D rb;
     float ms;
     public float timer { get; set; }
@@ -20,6 +22,7 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
+        bombsUsed = 0;
         playerTime = 10f;
         rb = GetComponent<Rigidbody2D>();
         timer = playerTime;
@@ -47,10 +50,15 @@ public class Movement : MonoBehaviour
     {
         //Debug.Log("I have gone boom");
         if (OnExplosion != null) { OnExplosion.Invoke(); }
-
-        //destroy all nearby objects & play boom animation
+        bombsUsed += 1;
+        Respawn();
 
         //send player back to starting position
+    }
+    void Respawn()
+    {
+        timer = playerTime;
+        // Set location to start and also whatever else we need
     }
 }
 
