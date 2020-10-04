@@ -39,7 +39,7 @@ public class ProjectileMovement : MonoBehaviour
         }
         else if (obj.GetComponent<Movement>()) //check to see if I collided with player
         {
-            obj.GetComponent<Movement>().playerTime -= damage;
+            obj.GetComponent<Movement>().timer -= damage;
         }
 
 

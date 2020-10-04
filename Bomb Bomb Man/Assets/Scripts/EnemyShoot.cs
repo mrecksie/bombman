@@ -34,9 +34,8 @@ public class EnemyShoot : MonoBehaviour, IExplode
         targetPos = (Vector2)target.transform.position;
 
         if ((targetPos - (Vector2)transform.position).magnitude >= attackRadius) { return; }
-
         RaycastHit2D enemyScan = Physics2D.Raycast((Vector2)transform.position, targetPos - (Vector2)transform.position, LayerMask.GetMask("Ignore Raycast", "UI", "Floor")); //Sends a ray towards the playerW
-        if(enemyScan.collider == null) { return; }
+        if (enemyScan.collider == null) { return; }
         if (!enemyScan.collider.CompareTag("Player")) { return; }
         FacePlayer();
         if (currentTime >= waitTime)
