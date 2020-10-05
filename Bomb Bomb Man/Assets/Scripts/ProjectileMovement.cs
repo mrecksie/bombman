@@ -3,7 +3,6 @@
 public class ProjectileMovement : MonoBehaviour
 {
     public float bulletSpeed, damage, timer;
-
     public GameObject target;
     void FixedUpdate()
     {

@@ -20,8 +20,13 @@ public class EnemyShoot : MonoBehaviour, IExplode
 
     public float turnSpeed, attackRadius;
 
-    
+    public bool isDestructable;
 
+
+    private void Awake()
+    {
+        isDestructable = true;
+    }
     void Start()
     {
         currentTime = 3; //initialize
@@ -79,7 +84,9 @@ public class EnemyShoot : MonoBehaviour, IExplode
     // IGNORE explosionLocation, only used for destroying tiles on a tilemap
     public void OnExplode(Vector2 explosionLocation)
     {
-        //Anything that happens before the object is deleted like death animation
-        Destroy(gameObject);
+        if (isDestructable)
+        {
+            Destroy(gameObject);
+        }
     }
 }
