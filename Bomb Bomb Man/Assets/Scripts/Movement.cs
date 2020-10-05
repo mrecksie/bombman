@@ -18,8 +18,6 @@ public class Movement : MonoBehaviour
     public delegate void Explosion();
     public Explosion OnExplosion;
 
-    public GameObject spawnPoint;
-
     void Start()
     {
         bombsUsed = 0;

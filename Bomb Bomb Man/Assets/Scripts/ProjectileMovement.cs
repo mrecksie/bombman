@@ -18,13 +18,13 @@ public class ProjectileMovement : MonoBehaviour
         
     }
 
-    void OnCollision2D(Collision2D col)
+    void OnTriggerEnter2D(Collision2D col)
     {
         if (col == null) { return; }
 
         GameObject obj = col.gameObject;
 
-        if (obj.CompareTag("Enemy")) { return; }
+        if (obj.tag == "Enemy") { return; }
 
         if (obj.GetComponent<Movement>() != null) //check to see if I collided with player
         {

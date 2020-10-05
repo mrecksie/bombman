@@ -247,9 +247,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
-  playerTime: 0
+  playerTime: 10
   movement: {x: 0, y: 0}
   bombsUsed: 0
+  spawnPoint: {fileID: 0}
 --- !u!1 &7253254442640062025
 GameObject:
   m_ObjectHideFlags: 0

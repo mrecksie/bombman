@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grid
       objectReference: {fileID: 0}
+    - target: {fileID: 8317185039237330768, guid: ceba42260031cdc4aa71f7c8b8741d6d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8317185039237330770, guid: ceba42260031cdc4aa71f7c8b8741d6d, type: 3}
       propertyPath: m_Tiles.Array.size
       value: 9
