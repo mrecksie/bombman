@@ -10,6 +10,8 @@ public class Movement : MonoBehaviour
 
     public int bombsUsed;
 
+    private int multiplier;
+
     Rigidbody2D rb;
     float ms;
     public float timer { get; set; }
@@ -23,11 +25,20 @@ public class Movement : MonoBehaviour
         bombsUsed = 0;
         rb = GetComponent<Rigidbody2D>();
         timer = playerTime;
+        multiplier = 1;
     }
 
     void Update()
     {
-        timer -= Time.deltaTime;
+        if(Input.GetKey(KeyCode.Space))
+        {
+            multiplier = 4;
+        }
+        else
+        {
+            multiplier = 1;
+        }
+        timer -= multiplier * Time.deltaTime;
 
         if (timer <= 0)
         {
