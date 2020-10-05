@@ -80,6 +80,6 @@ public class EnemyShoot : MonoBehaviour, IExplode
     public void OnExplode(Vector2 explosionLocation)
     {
         //Anything that happens before the object is deleted like death animation
-        Destroy(this);
+        Destroy(gameObject);
     }
 }

@@ -18,7 +18,7 @@ public class ProjectileMovement : MonoBehaviour
         
     }
 
-    void OnTriggerEnter2D(Collision2D col)
+    void OnCollisionEnter2D(Collision2D col)
     {
         if (col == null) { return; }
 
@@ -26,11 +26,12 @@ public class ProjectileMovement : MonoBehaviour
 
         if (obj.tag == "Enemy") { return; }
 
+        Debug.Log(obj.name);
+
         if (obj.GetComponent<Movement>() != null) //check to see if I collided with player
         {
             obj.GetComponent<Movement>().timer -= damage;
         }
-        if (obj.CompareTag("Floor")) { return; }
         Destroy(gameObject);
     }
     public void SetSpeed(float speed, float bulletDamage, float bulletTimer)
