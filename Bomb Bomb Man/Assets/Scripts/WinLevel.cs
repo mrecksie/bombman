@@ -7,10 +7,14 @@ public class WinLevel : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D collision)
     {
-        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        if (SceneManager.sceneCountInBuildSettings > nextSceneIndex)
+        if (collision.gameObject.CompareTag("Player"))
         {
-            SceneManager.LoadScene(nextSceneIndex);
+            Debug.Log("Water is colliding with player");
+            int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+            if (SceneManager.sceneCountInBuildSettings >= nextSceneIndex)
+            {
+                SceneManager.LoadScene(nextSceneIndex);
+            }
         }
     }
 }
