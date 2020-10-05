@@ -701,7 +701,7 @@ GameObject:
   - component: {fileID: 832376198}
   m_Layer: 0
   m_Name: Tilemap Base
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2255,7 +2255,7 @@ GameObject:
   - component: {fileID: 1027174788}
   m_Layer: 0
   m_Name: Tilemap Walls
-  m_TagString: Untagged
+  m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3301,7 +3301,7 @@ GameObject:
   - component: {fileID: 2084235758}
   m_Layer: 0
   m_Name: Tilemap Destructable
-  m_TagString: Untagged
+  m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3636,6 +3636,10 @@ PrefabInstance:
     - target: {fileID: 3840017617642509048, guid: a61005cc7c547d64e8f8ba364ad6fd2d, type: 3}
       propertyPath: waitTime
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840017617642509048, guid: a61005cc7c547d64e8f8ba364ad6fd2d, type: 3}
+      propertyPath: numOfBullets
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3840017617642509050, guid: a61005cc7c547d64e8f8ba364ad6fd2d, type: 3}
       propertyPath: m_LocalPosition.x
