@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "welcome to bombman.\n\n\nto move around, use the wasd keys\n \nthe red
+  m_text: "welcome to bomb guy\n\n\nto move around, use the wasd keys\n \nthe red
     bar on the right indicates how long you have left\nbefore you explode\n\nhold
     down space to blow up faster\n\nwhen you explode, cracked walls and enemies will
     be destroyed\n\ntouch the water to finish the level you are on\n\n\npress the
