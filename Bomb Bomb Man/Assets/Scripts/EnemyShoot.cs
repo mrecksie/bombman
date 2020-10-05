@@ -6,7 +6,8 @@ public class EnemyShoot : MonoBehaviour, IExplode
 {
 
     #region | Bullet Stats
-    public float bulletSpeed, bulletDamage, timeOfBullet;
+    public float bulletSpeed, bulletDamage, timeOfBullet, spreadOfTurret;
+    public int numOfBullets;
     #endregion | Bullet Stats
 
     public GameObject projectile;
@@ -47,10 +48,22 @@ public class EnemyShoot : MonoBehaviour, IExplode
 
     void Fire(Vector2 pos)
     {
+        ProjectileMovement obj;
         Vector3 spawnHere = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0f);
-        ProjectileMovement obj = Instantiate(projectile, spawnHere, gameObject.transform.rotation).GetComponent<ProjectileMovement>();
-        obj.SetSpeed(bulletSpeed, bulletDamage, timeOfBullet);
-        obj.gameObject.SetActive(true);
+        if (numOfBullets <= 1)
+        {
+            obj = Instantiate(projectile, spawnHere, gameObject.transform.rotation).GetComponent<ProjectileMovement>();
+            obj.SetSpeed(bulletSpeed, bulletDamage, timeOfBullet);
+            obj.gameObject.SetActive(true);
+        } else
+        {
+            for (int i = 0; i < numOfBullets; i++)
+            {
+                obj = Instantiate(projectile, spawnHere, Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z - spreadOfTurret/2 + i * spreadOfTurret/numOfBullets)).GetComponent<ProjectileMovement>();
+                obj.SetSpeed(bulletSpeed, bulletDamage, timeOfBullet);
+                obj.gameObject.SetActive(true);
+            }
+        }
     }
 
     void FacePlayer()

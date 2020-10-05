@@ -1,21 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ProjectileMovement : MonoBehaviour
 {
     public float bulletSpeed, damage, timer;
 
     public GameObject target;
-    float bulletTime;
-
-    Rigidbody2D rb;
-
-    void Start()
-    {
-        rb = gameObject.GetComponent<Rigidbody2D>();
-    }
-
     void FixedUpdate()
     {
         timer -= Time.fixedDeltaTime;
@@ -29,20 +18,17 @@ public class ProjectileMovement : MonoBehaviour
         
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnCollision2D(Collision2D col)
     {
+        if (col == null) { return; }
         GameObject obj = col.gameObject;
 
-        if (obj.GetComponent<EnemyShoot>())
-        {
-            return;
-        }
-        else if (obj.GetComponent<Movement>()) //check to see if I collided with player
+
+        if (obj.GetComponent<Movement>() != null) //check to see if I collided with player
         {
             obj.GetComponent<Movement>().timer -= damage;
         }
-
-
+        if (obj.CompareTag("Floor")) { return; }
         Destroy(gameObject);
     }
     public void SetSpeed(float speed, float bulletDamage, float bulletTimer)
@@ -51,6 +37,7 @@ public class ProjectileMovement : MonoBehaviour
         damage = bulletDamage;
         timer = bulletTimer;
 
-        
+
     }
+    
 }
