@@ -18,12 +18,11 @@ public class Movement : MonoBehaviour
     public delegate void Explosion();
     public Explosion OnExplosion;
 
-    
+    public GameObject spawnPoint;
 
     void Start()
     {
         bombsUsed = 0;
-        playerTime = 10f;
         rb = GetComponent<Rigidbody2D>();
         timer = playerTime;
     }
@@ -55,10 +54,17 @@ public class Movement : MonoBehaviour
 
         //send player back to starting position
     }
-    void Respawn()
+    public void Respawn()
     {
         timer = playerTime;
         // Set location to start and also whatever else we need
+
+        transform.position = Vector3.zero;
+    }
+
+    public void nextScene()
+    {
+
     }
 }
 
